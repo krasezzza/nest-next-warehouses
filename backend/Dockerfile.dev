@@ -1,0 +1,14 @@
+FROM node:20-alpine AS development
+
+# working directory inside the container
+WORKDIR /app
+
+COPY package.json ./
+COPY yarn.lock ./
+RUN yarn install
+
+# copy the application code
+COPY . .
+
+# start the application
+CMD ["yarn", "start:dev"]

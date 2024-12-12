@@ -1,0 +1,41 @@
+services:
+  app:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env.dev
+    ports:
+      - '5001:5001'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - database
+
+  database:
+    image: postgres:17-alpine
+    container_name: database
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@example.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - '5050:80'
+    depends_on:
+      - database
+
+volumes:
+  db-data:
