@@ -30,8 +30,7 @@ export default function ButtonGeneric({
       classes += `${defaultClasses} ${additionalClasses}`;
     }
     if (isDisabled) {
-      classes +=
-        ' !bg-transparent !font-semibold';
+      classes += ' !bg-transparent !font-semibold';
     }
     if (overrideClasses) {
       classes = overrideClasses;
@@ -44,7 +43,7 @@ export default function ButtonGeneric({
     <div
       ref={buttonRef}
       className={buttonClasses()}
-      onClick={!isDisabled && onClickHandler ? onClickHandler : () => { }}
+      onClick={!isDisabled && onClickHandler ? onClickHandler : () => {}}
     >
       <span className="mx-[6px]">{label}</span>
     </div>

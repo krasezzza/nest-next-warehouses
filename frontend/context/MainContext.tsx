@@ -1,7 +1,7 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
 import { ProductItem } from '@/interfaces';
+import { createContext, useContext, useState } from 'react';
 
 interface MainContextType {
   masterProductsList: ProductItem[];
@@ -10,11 +10,13 @@ interface MainContextType {
 
 const MainContext = createContext<MainContextType>({
   masterProductsList: [],
-  setMasterProductsList: () => { },
+  setMasterProductsList: () => {},
 });
 
 const MainProvider = ({ children }: { children: React.ReactNode }) => {
-  const [masterProductsList, setMasterProductsList] = useState<ProductItem[]>([]);
+  const [masterProductsList, setMasterProductsList] = useState<ProductItem[]>(
+    [],
+  );
 
   return (
     <MainContext.Provider

@@ -16,8 +16,7 @@ export default function ButtonPrimary({
   additionalButtonClasses,
 }: ButtonPrimaryProps) {
   const additionalClasses = () => {
-    let classes =
-      '!bg-primary !text-sm !font-semibold';
+    let classes = '!bg-primary !text-sm !font-semibold';
 
     if (additionalButtonClasses) {
       classes += ` ${additionalButtonClasses}`;

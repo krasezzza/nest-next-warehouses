@@ -16,8 +16,7 @@ export default function ButtonSecondary({
   additionalButtonClasses,
 }: ButtonSecondaryProps) {
   const additionalClasses = () => {
-    let classes =
-      '!bg-secondary !text-sm !font-normal';
+    let classes = '!bg-secondary !text-sm !font-normal';
 
     if (additionalButtonClasses) {
       classes += ` ${additionalButtonClasses}`;
