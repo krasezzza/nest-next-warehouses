@@ -6,6 +6,7 @@ interface InputTextProps {
   onChangeHandler?: (value: string) => void;
   additionalWrapperClasses?: string;
   additionalInputClasses?: string;
+  isReadOnly?: boolean;
 }
 
 export default function InputText({
@@ -14,10 +15,11 @@ export default function InputText({
   onChangeHandler,
   additionalWrapperClasses,
   additionalInputClasses,
+  isReadOnly = false,
 }: InputTextProps) {
   const wrapperClasses = () => {
     let classes =
-      'max-w-[180px] h-[40px] px-[12px] rounded-md flex flex-row items-center justify-center text-bgnd-dark shadow-inner border hover:bg-hover-light hover:border-blue-main';
+      'max-w-[240px] h-[40px] px-[12px] rounded-md flex flex-row items-center justify-center text-bgnd-dark shadow-inner border hover:bg-hover-light hover:border-blue-main';
 
     if (additionalWrapperClasses) {
       classes += ` ${additionalWrapperClasses}`;
@@ -50,6 +52,7 @@ export default function InputText({
             onChangeHandler(e.target.value);
           }
         }}
+        readOnly={isReadOnly}
       />
     </div>
   );
