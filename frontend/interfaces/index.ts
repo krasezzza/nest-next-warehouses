@@ -10,8 +10,8 @@ export interface EmptyProductItem extends ProductItem {}
 export interface WarehouseData {
   id: number;
   name: string;
-  isHazardous: boolean;
   maxCapacity: number;
+  isHazardous: boolean;
 }
 
 export interface HistoryRecord {
