@@ -9,8 +9,5 @@ export class Warehouse {
   name: string;
 
   @Column()
-  maxCapacity: number;
-
-  @Column()
   isHazardous: boolean;
 }

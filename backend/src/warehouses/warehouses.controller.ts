@@ -1,16 +1,21 @@
-import { Controller, Delete, Get, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { WarehousesService } from './warehouses.service';
 import { Warehouse } from './warehouse.entity';
 
 @Controller('warehouses')
 export class WarehousesController {
   constructor(
-    private warehousesService: WarehousesService
+    private readonly warehousesService: WarehousesService
   ) { }
 
   @Get()
   async getAll(): Promise<Warehouse[]> {
     return await this.warehousesService.findAll();
+  }
+
+  @Get(':id')
+  async getOne(@Param('id') id: number): Promise<Warehouse> {
+    return await this.warehousesService.findOne(id);
   }
 
   @Post()

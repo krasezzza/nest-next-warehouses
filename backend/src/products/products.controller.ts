@@ -5,7 +5,7 @@ import { Product } from './product.entity';
 @Controller('products')
 export class ProductsController {
   constructor(
-    private productsService: ProductsService
+    private readonly productsService: ProductsService
   ) { }
 
   @Get()

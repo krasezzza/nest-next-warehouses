@@ -1,12 +1,23 @@
 import { Module } from '@nestjs/common';
-import { WarehousesService } from './warehouses.service';
-import { WarehousesController } from './warehouses.controller';
-import { Warehouse } from './warehouse.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Warehouse } from './warehouse.entity';
+import { WarehousesController } from './warehouses.controller';
+import { WarehousesService } from './warehouses.service';
+import { StocksModule } from '../stocks/stocks.module';
+import { HazardousWarehouseCreator } from './creators/hazardous-warehouse.creator';
+import { NonHazardousWarehouseCreator } from './creators/non-hazardous-warehouse.creator';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Warehouse])],
-  providers: [WarehousesService],
-  controllers: [WarehousesController]
+  imports: [
+    TypeOrmModule.forFeature([Warehouse]),
+    StocksModule,
+  ],
+  providers: [
+    WarehousesService,
+    HazardousWarehouseCreator,
+    NonHazardousWarehouseCreator,
+  ],
+  controllers: [WarehousesController],
+  exports: [WarehousesService],
 })
 export class WarehousesModule { }

@@ -1,16 +1,16 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Product {
+export class Stock {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  name: string;
+  warehouseId: number;
 
   @Column()
-  quantity: number;
+  maxCapacity: number;
 
   @Column()
-  isHazardous: boolean;
+  usedCapacity: number;
 }
