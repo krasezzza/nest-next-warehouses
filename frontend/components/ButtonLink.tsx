@@ -15,7 +15,7 @@ export default function ButtonLink({
 }: ButtonLinkProps) {
   const buttonClasses = () => {
     let classes =
-      'px-[12px] h-[40px] flex items-center justify-center bg-gray border border-white text-white cursor-pointer select-none';
+      'px-[12px] w-full h-[40px] flex items-center justify-center bg-gray border border-white text-white cursor-pointer select-none';
 
     if (overrideClasses) {
       classes = overrideClasses;

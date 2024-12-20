@@ -1,4 +1,4 @@
-import { Controller, Delete, Get } from '@nestjs/common';
+import { Controller, Delete, Get, Param } from '@nestjs/common';
 import { StocksService } from './stocks.service';
 import { Stock } from './stock.entity';
 
@@ -11,6 +11,11 @@ export class StocksController {
   @Get()
   async getAll(): Promise<Stock[]> {
     return await this.stocksService.findAll();
+  }
+
+  @Get('by-warehouse/:warehouseId')
+  async getOneByWarehouse(@Param('warehouseId') warehouseId: number): Promise<Stock> {
+    return await this.stocksService.findOneByWarehouse(warehouseId);
   }
 
   @Delete()

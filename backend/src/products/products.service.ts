@@ -14,6 +14,14 @@ export class ProductsService {
     return await this.productsRepository.find();
   }
 
+  async findHazardous(): Promise<Product[]> {
+    return await this.productsRepository.findBy({ isHazardous: true });
+  }
+
+  async findNonhazardous(): Promise<Product[]> {
+    return await this.productsRepository.findBy({ isHazardous: false });
+  }
+
   async findOne(id: number): Promise<Product> {
     return await this.productsRepository.findOne({ where: { id } });
   }

@@ -1,23 +1,32 @@
-export interface ProductItem {
-  id: number;
-  name: string;
-  amount: number;
-  isHazardous: boolean;
-}
-
-export interface EmptyProductItem extends ProductItem {}
-
 export interface WarehouseData {
   id: number;
   name: string;
-  maxCapacity: number;
   isHazardous: boolean;
 }
 
-export interface HistoryRecord {
+export interface WarehouseStock {
   id: number;
   warehouseId: number;
+  maxCapacity: number;
+  usedCapacity: number;
+}
+
+export interface WarehouseMovement {
+  id: number;
+  warehouseId: number;
+  productId: number;
+  amount: number;
   type: 'import' | 'export';
-  productName: string;
+  timestamp: number;
+}
+
+export interface ProductItem {
+  id: number;
+  name: string;
+  isHazardous: boolean;
   quantity: number;
+}
+
+export interface EmptyProductItem extends ProductItem {
+  // has all the properties of ProductItem
 }

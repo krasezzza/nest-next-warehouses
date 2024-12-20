@@ -9,12 +9,22 @@ export class ProductsController {
   ) { }
 
   @Get()
-  async getAll(): Promise<Product[]> {
+  async findAll(): Promise<Product[]> {
     return await this.productsService.findAll();
   }
 
+  @Get('by-type/hazardous')
+  async findHazardous(): Promise<Product[]> {
+    return await this.productsService.findHazardous();
+  }
+
+  @Get('by-type/nonhazardous')
+  async findNonhazardous(): Promise<Product[]> {
+    return await this.productsService.findNonhazardous();
+  }
+
   @Get(':id')
-  async getOne(@Param('id') id: number): Promise<Product> {
+  async findOne(@Param('id') id: number): Promise<Product> {
     const result = await this.productsService.findOne(id);
 
     if (!result) {

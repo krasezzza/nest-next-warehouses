@@ -9,8 +9,8 @@ export class Product {
   name: string;
 
   @Column()
-  quantity: number;
+  isHazardous: boolean;
 
   @Column()
-  isHazardous: boolean;
+  quantity: number;
 }

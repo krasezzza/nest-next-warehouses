@@ -15,7 +15,7 @@ export class StocksService {
     return await this.stocksRepository.find();
   }
 
-  async findOne(warehouseId: number): Promise<Stock> {
+  async findOneByWarehouse(warehouseId: number): Promise<Stock> {
     return await this.stocksRepository.findOne({ where: { warehouseId } });
   }
 

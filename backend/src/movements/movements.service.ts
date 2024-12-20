@@ -29,7 +29,7 @@ export class MovementsService {
     const recordSaved = await this.movementRepository.save(recordCreated);
 
     // Get the related stock
-    const relatedStock = await this.stocksService.findOne(record.warehouseId);
+    const relatedStock = await this.stocksService.findOneByWarehouse(record.warehouseId);
 
     // Process the movement using the appropriate handler
     const handler = this.movementHandlerFactory.getHandler(record.type);

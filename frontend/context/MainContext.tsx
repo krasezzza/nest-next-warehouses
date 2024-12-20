@@ -1,8 +1,9 @@
 'use client';
 
-import { HistoryRecord, ProductItem, WarehouseData } from '@/interfaces';
-import { AVAILABLE_WAREHOUSES_LIST } from '@/mocks';
-import { createContext, useContext, useState } from 'react';
+import { getWarehousesList } from '@/api';
+import { ProductItem, WarehouseData } from '@/interfaces';
+import { EMPTY_WAREHOUSE } from '@/mocks';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 interface MainContextType {
   masterProductsList: ProductItem[];
@@ -10,30 +11,29 @@ interface MainContextType {
 
   warehousesList: WarehouseData[];
   setWarehousesList: (value: WarehouseData[]) => void;
-
-  historicalData: HistoryRecord[];
-  setHistoricalData: (value: HistoryRecord[]) => void;
 }
 
 const MainContext = createContext<MainContextType>({
   masterProductsList: [],
   setMasterProductsList: () => {},
 
-  warehousesList: AVAILABLE_WAREHOUSES_LIST,
+  warehousesList: [],
   setWarehousesList: () => {},
-
-  historicalData: [],
-  setHistoricalData: () => {},
 });
 
 const MainProvider = ({ children }: { children: React.ReactNode }) => {
   const [masterProductsList, setMasterProductsList] = useState<ProductItem[]>(
     [],
   );
-  const [warehousesList, setWarehousesList] = useState<WarehouseData[]>(
-    AVAILABLE_WAREHOUSES_LIST,
-  );
-  const [historicalData, setHistoricalData] = useState<HistoryRecord[]>([]);
+  const [warehousesList, setWarehousesList] = useState<WarehouseData[]>([]);
+
+  useEffect(() => {
+    getWarehousesList().then((res) => {
+      if (res.data) {
+        setWarehousesList([EMPTY_WAREHOUSE, ...res.data]);
+      }
+    });
+  }, []);
 
   return (
     <MainContext.Provider
@@ -43,9 +43,6 @@ const MainProvider = ({ children }: { children: React.ReactNode }) => {
 
         warehousesList,
         setWarehousesList,
-
-        historicalData,
-        setHistoricalData,
       }}
     >
       {children}
