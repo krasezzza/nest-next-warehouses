@@ -1,9 +1,9 @@
 'use client';
 
 import { getProductsList } from '@/api';
-import ButtonLink from '@/components/ButtonLink';
 import AddProductForm from '@/components/products/AddProductForm';
 import MasterProductsList from '@/components/products/MasterProductsList';
+import ButtonLink from '@/components/shared/ButtonLink';
 import { useMainContext } from '@/context/MainContext';
 import { useEffect, useState } from 'react';
 

@@ -3,7 +3,7 @@
 import { deleteProduct } from '@/api';
 import { useMainContext } from '@/context/MainContext';
 import { ProductItem } from '@/interfaces';
-import ButtonSecondary from '../ButtonSecondary';
+import ButtonSecondary from '../shared/ButtonSecondary';
 
 export default function MasterProductsList({
   updateRenderKey,

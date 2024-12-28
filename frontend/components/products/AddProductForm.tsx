@@ -3,9 +3,9 @@
 import { createProduct } from '@/api';
 import { ProductItem } from '@/interfaces';
 import { useState } from 'react';
-import ButtonPrimary from '../ButtonPrimary';
-import Checkbox from '../Checkbox';
-import InputText from '../InputText';
+import ButtonPrimary from '../shared/ButtonPrimary';
+import Checkbox from '../shared/Checkbox';
+import InputText from '../shared/InputText';
 
 export default function AddProductForm({
   updateRenderKey,
@@ -88,7 +88,7 @@ export default function AddProductForm({
 
       <div className="flex items-center justify-end">
         <ButtonPrimary
-          label="Submit"
+          label="Add Product"
           onClickHandler={handleProductSubmit}
           additionalButtonClasses="w-[180px]"
         />

@@ -1,12 +1,8 @@
 'use client';
 
-import {
-  getHazardousProducts,
-  getNonhazardousProducts,
-  getWarehouseStock,
-} from '@/api';
-import ButtonLink from '@/components/ButtonLink';
-import SelectList from '@/components/SelectList';
+import { getWarehouseStock } from '@/api';
+import ButtonLink from '@/components/shared/ButtonLink';
+import SelectList from '@/components/shared/SelectList';
 import WarehouseMovementCreate from '@/components/warehouses/WarehouseMovementCreate';
 import WarehouseMovements from '@/components/warehouses/WarehouseMovements';
 import { useMainContext } from '@/context/MainContext';

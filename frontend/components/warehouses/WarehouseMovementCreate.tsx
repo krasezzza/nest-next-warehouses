@@ -1,6 +1,10 @@
 'use client';
 
-import { createMovementRecord, getHazardousProducts, getNonhazardousProducts } from '@/api';
+import {
+  createMovementRecord,
+  getHazardousProducts,
+  getNonhazardousProducts,
+} from '@/api';
 import { useMainContext } from '@/context/MainContext';
 import {
   EmptyProductItem,
@@ -10,9 +14,9 @@ import {
 } from '@/interfaces';
 import { EMPTY_PRODUCT_ITEM } from '@/mocks';
 import { useEffect, useState } from 'react';
-import ButtonPrimary from '../ButtonPrimary';
-import InputText from '../InputText';
-import SelectList from '../SelectList';
+import ButtonPrimary from '../shared/ButtonPrimary';
+import InputText from '../shared/InputText';
+import SelectList from '../shared/SelectList';
 
 export default function WarehouseMovementCreate({
   data,
@@ -84,10 +88,7 @@ export default function WarehouseMovementCreate({
   return data.id > 0 ? (
     <div className="py-[30px] w-full grid grid-rows-1 grid-cols-[30%_25%_25%_auto] items-center">
       <SelectList
-        options={[
-          EMPTY_PRODUCT_ITEM,
-          ...masterProductsList,
-        ]}
+        options={[EMPTY_PRODUCT_ITEM, ...masterProductsList]}
         setCurrentOption={setCurrentProductItem}
       />
 

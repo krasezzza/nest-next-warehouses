@@ -4,7 +4,13 @@ import { getWarehouseMovements } from '@/api';
 import { WarehouseData, WarehouseMovement } from '@/interfaces';
 import { useEffect, useState } from 'react';
 
-export default function WarehouseMovements({ renderKey, data }: { renderKey: number; data: WarehouseData }) {
+export default function WarehouseMovements({
+  renderKey,
+  data,
+}: {
+  renderKey: number;
+  data: WarehouseData;
+}) {
   const [historicalData, setHistoricalData] = useState<WarehouseMovement[]>([]);
 
   useEffect(() => {
